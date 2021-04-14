@@ -1,0 +1,115 @@
+
+  <app-header></app-header>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<div class="card">
+  <div class="card-body">
+    <pagination-controls id="basicPaginate" (pageChange)="pageChanged($event)"></pagination-controls>
+  </div>
+</div>
+
+<body>
+  
+  <div class="row custom-station">
+    <div class="col-md-4" *ngFor="let eachradiostation of collection.data | paginate: config">
+        <div class="row" id="eachradiostation" (click)="stationInfo(eachradiostation)">
+          <div class="card pl-2 col-md-12" width="100%">
+            <img class="card-img-top" [src]="eachradiostation.favicon == '' ? defaultImage : eachradiostation.favicon" alt="no image found">
+            <div class="card-body text-white bg-dark">
+              <p class="card-text">{{eachradiostation.name}}</p>
+            </div>
+            <span class="custom-live">LIVE</span>
+          </div>
+        </div>
+    </div>
+  </div>
+
+ 
+</body>
+</html>
+
+
+ <!-- Radio Station Info Modal -->
+ <div class="modal fade" id="radiostationModal" tabindex="-1" role="dialog" aria-labelledby="radiostationModal" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="radiostationModal">Radio Station Information</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        
+        <!-- {{radioStationInfo.name}}
+        {{radioStationInfo.country}} -->
+
+        <ngx-audio-player [playlist]="msaapPlaylist" [displayTitle]="msaapDisplayTitle" [autoPlay]="false" 
+        muted="muted" [displayPlaylist]="msaapDisplayPlayList" (trackEnded)="onEnded($event)"
+            [displayVolumeControls]="msaapDisplayVolumeControls" [displayRepeatControls]="msaapDisplayRepeatControls"
+            [disablePositionSlider]="msaapDisablePositionSlider" [displayArtist]="msaapDisplayArtist" 
+            [displayDuration]="msaapDisplayDuration" [expanded]="true"></ngx-audio-player> 
+    
+            <div class="row">
+              <ul class="list-group list-group-flush col-lg-6">
+                <li class="list-group-item text-success font-weight-bold">NAME</li>
+                <li class="list-group-item text-success font-weight-bold">TAGS</li>
+                <li class="list-group-item text-success font-weight-bold">CODEC</li>
+                <li class="list-group-item text-success font-weight-bold">LANGUAGE</li>
+                <li class="list-group-item text-success font-weight-bold">COUNTRY</li>
+                <li class="list-group-item text-success font-weight-bold">STATE</li>
+              </ul>
+              <ul class="list-group list-group-flush col-lg-6">
+                <li class="list-group-item">{{radioStationInfo.name}}</li>
+                <li class="list-group-item">{{radioStationInfo.tags}}</li>
+                <li class="list-group-item">{{radioStationInfo.codec}}</li>
+                <li class="list-group-item">{{radioStationInfo.language}}</li>
+                <li class="list-group-item">{{radioStationInfo.country}}</li>
+                <li class="list-group-item">{{radioStationInfo.state}}</li>
+              </ul>
+            </div>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+ <!-- HomePage Modal -->
+ <div class="modal fade" id="homePageModal"  tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body custom-modal">
+        Welcome to Live Radio Streaming Application
+      </div>
+     
+    </div>
+  </div>
+</div>
+
+
+
+
+  
+    <!-- <button type="button" (click)="playAudio()" [ngStyle]="{'display': isPlaying? 'block' : 'none'}">
+      <i class="fa fa-play" aria-hidden="true"></i>
+    </button>
+
+  
+    <button type="button" [ngStyle]="{'display': isPlaying? 'none' : 'block'}">
+      <i class="fa fa-stop" aria-hidden="true"></i>
+    </button> -->
+  
+ 

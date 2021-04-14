@@ -1,0 +1,172 @@
+
+
+<nav class="navbar navbar-expand-lg navbar-light bg-custom">
+    <a class="navbar-brand" href="#"></a>
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+      <ul class="navbar-nav">
+        <li class="nav-item active">
+          <a class="nav-link wsite-menu-item" routerLink=""><i class="fa fa-home"></i> Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="dropdown">
+          <a class="nav-link dropdown-toggle wsite-menu-item" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-list-alt" aria-hidden="true"></i> Categories
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+            <a class="dropdown-item" (click)="clickByCountryList()" data-toggle="modal" data-target="#countryModal">By Country</a>
+            <a class="dropdown-item"  (click)="clickByLanguagesList()">By Language</a>
+            <a class="dropdown-item"  (click)="clickByCodecsList()">By Codec</a>
+            <a class="dropdown-item"  (click)="clickByTagsList()">By Tag</a>
+          </div>
+        </li>
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle wsite-menu-item" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-fire"></i> Popularity
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+              <a class="dropdown-item" routerLink="/clicks">By Clicks</a>
+              <a class="dropdown-item" routerLink="/votes">By Vote</a>
+              <a class="dropdown-item" routerLink="/lately-played">Lately Played</a>
+              <a class="dropdown-item" routerLink="/lately-changed">Lately Changed</a>
+            </div>
+          </li>
+      </ul>
+    </div>
+</nav>
+
+  
+  <!-- All Countries Modal -->
+  <div class="modal fade" id="countryModal" tabindex="-1" role="dialog" aria-labelledby="countryModal" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="countryModal">List of Countries</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          
+
+          <div class="row">
+            <div class="col-md-4" *ngFor="let eachCountry of listOfCountries; index as i;">
+                <div class="row">
+                    
+                    <a (click)="clickByCountry(eachCountry.name)" class="pl-4 col-md-12">{{eachCountry.name}}({{eachCountry.stationcount}})</a>
+                </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+   <!-- All Languages Modal -->
+   <div class="modal fade" id="languageModal" tabindex="-1" role="dialog" aria-labelledby="languageModal" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="languageModal">List of Languages</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          
+
+          <div class="row">
+            <div class="col-md-4" *ngFor="let eachlanguage of listOfLanguages;">
+                <div class="row">
+                    
+                    <a (click)="clickByLanguage(eachlanguage.name)" class="pl-4 col-md-12">{{eachlanguage.name}}({{eachlanguage.stationcount}})</a>
+                </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- All Codecs Modal -->
+  <div class="modal fade" id="codecsModal" tabindex="-1" role="dialog" aria-labelledby="codecsModal" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="codecsModal">List of Codecs</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          
+
+          <div class="row">
+            <div class="col-md-4" *ngFor="let eachcodec of listOfCodecs;">
+                <div class="row">
+                    
+                    <a (click)="clickByCodec(eachcodec.name)" class="pl-4 col-md-12">{{eachcodec.name}}({{eachcodec.stationcount}})</a>
+                </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+    <!-- All Tags Modal -->
+    <div class="modal fade" id="tagsModal" tabindex="-1" role="dialog" aria-labelledby="tagsModal" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="tagsModal">List of Tags</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              
+    
+              <div class="row">
+                <div class="col-md-4" *ngFor="let eachtag of listOfTags;">
+                    <div class="row">
+                        
+                        <a (click)="clickByTag(eachtag.name)" class="pl-4 col-md-12">{{eachtag.name}}({{eachtag.stationcount}})</a>
+                    </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <!-- All Clicks Modal -->
+  <div class="modal fade" id="clicksModal" tabindex="-1" role="dialog" aria-labelledby="clicksModal" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="clicksModal">List of Clicks</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          
+          <div class="row">
+            <div class="col-md-4" *ngFor="let eachcodec of listOfClicks;">
+                <div class="row">
+                    
+                    <a href="#" class="pl-4 col-md-12">{{eachcodec.name}}({{eachcodec.stationcount}})</a>
+                </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
